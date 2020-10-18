@@ -1,19 +1,277 @@
 body {
+  position: relative;
   background: #4b5b68;
+  color: aliceblue;
+  font-family: 'Roboto Mono', monospace;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  user-select: none;
 }
 
-.form,
-.greetings {
+h1, h4 {
+  margin: 0;
+}
+
+input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+/* weather */
+.weather {
+  display: block;
+  margin: 0 1em;
+  line-height: 2em;
+  text-align: right;
+}
+
+.weather__icon {
+  width: 2.5rem;
+  vertical-align: top;
+  margin: 0 -0.4em;
+  margin-top: -3px;
+  z-index: 1;
+}
+
+/* main */
+.main {
+  position: absolute;
+  left: 7%;
+  top: 10%;
+  width: 100vw;
+}
+
+/* Greeting */
+.greeting__input,
+.greeting__name,
+.greeting__input::placeholder {
+  color: white;
+  text-align: left;
+  text-shadow: 0.1em 0.1em 0.2em black;
+  margin-bottom: 1em;
+  font-size: 3rem;
+}
+
+/* To do */
+.todos__input,
+.todos__item,
+.todos__delete,
+.todos__input::placeholder {
+  color: white;
+  text-align: left;
+  text-shadow: 0.1em 0.1em 0.2em black;
+}
+
+.todos__input {
+  position: relative;
+  font-size: 2rem;
+  padding: 0;
+  margin-bottom: 0.5em;
+  z-index: 1;
+}
+
+.todos__label {
+  position: relative;
+  display: inline;
+  cursor: pointer;
+}
+
+.todos__list {
+  height: 30vh;
+  width: fit-content;
+  text-align: right;
+  font-size: 1.5em;
+  font-weight: normal;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.todos__list::-webkit-scrollbar {
+  position: relative;
+  width: 0.3em;
+}
+
+.todos__list::-webkit-scrollbar-thumb {
+  background-color: #ffffff80;
+  border-radius: 0.3em;
+}
+
+.todos__list::-webkit-scrollbar-track {
+  border: 1px solid #00000020;
+  background: transparent;
+}
+
+.todos__item {
+  margin-bottom: 0.4em;
+  margin-right: 2em;
+}
+
+.todos__mark {
+  display: block;
+  position: absolute;
+  left: 0.2em;
+  top: 0.5em;
+  width: 0.5em;
+  height: 0.5em;
+  box-shadow: 0.1em 0.1em 0.1em #00000040;
+  transition: box-shadow .2s ease-in;
+}
+
+.todos__label:hover .todos__mark {
+  box-shadow: 0.1em 0.1em 0.1em #00000090;
+}
+
+.todos__mark:after {
+  content: '';
+  position: absolute;
+  left: 0.1em;
+  top: -0.4em;
+  width: 0.4em;
+  height: 0.6em;
+  border: solid white;
+  border-width: 0 0.2em 0.2em 0;
+  transform: rotate(45deg) scaleX(0.6);
+  opacity: 0;
+  transition: .2s ease-in;
+}
+
+.todos__label:hover .todos__mark:after {
+  opacity: 0.5;
+}
+
+.todos__check:checked ~ .todos__mark:after {
+  opacity: 1;
+}
+
+.todos__check {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  user-select: none;
+}
+
+.todos__text {
+  position: relative;
+  margin-left: 1.2em;
+  transition: .3s ease-in;
+}
+
+.todos__check:checked ~ .todos__text {
+  color: #ffffff30;
+  opacity: 0.8;
+}
+
+.todos__text:after {
+  content: '';
+  position: absolute;
+  left: -0.2em;
+  top: 0.7em;
+  width: 0;
+  height: 0.05em;
+  background-color: #fff;
+  opacity: 0;
+  transition: width .3s ease-in;
+}
+
+.todos__check:checked ~ .todos__text:after {
+  width: 105%;
+  opacity: 0.9;
+}
+
+.todos__delete {
+  margin-left: 0.5em;
+  font-size: 0.7em;
+  transition: transform .2s ease-in;
+}
+
+.todos__delete:hover {
+  transform: scale(1.2);
+}
+
+/* clock */
+.clock {
+  text-align: right;
+  width: 6em;
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+  font-size: 13vw;
+  color: white;
+  opacity: 0.5;
+  margin-bottom: -0.4em;
+  letter-spacing: -0.15em;
+}
+
+.clock__hours {
+  position: absolute;
+  right: 2.4em;
+  bottom: 0;
+}
+
+.clock__minutes {
+  position: absolute;
+  right: 1.2em;
+  bottom: 0;
+}
+
+.clock__minutes:before {
+  content: ':';
+  display: inline-block;
+  position: relative;
+  right: -0.15em;
+  bottom: 0;
+  transform: scale(0.6);
+}
+
+
+.clock__seconds {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.clock__seconds:before {
+  content: ':';
+  display: inline-block;
+  position: relative;
+  right: -0.16em;
+  bottom: 0;
+  transform: scale(0.6);
+}
+
+
+
+/* Used for JS */
+.greeting__form,
+.greeting__name {
   display: none;
 }
 
 .showing {
   display: block;
 }
-
 .bgImage{
   position: absolute;
-  top: 0;left: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   z-index: -1;
@@ -26,5 +284,34 @@ body {
   }
   to {
     opacity: 1;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .clock {
+    font-size: 30vw;
+  }
+
+  .clock__hours {
+    right: 1.25em;
+  }
+  
+  .clock__minutes {
+    right: 0;
+  }
+  
+  .clock__minutes:before {
+    right: -0.13em;
+  }
+
+  .clock__seconds {
+    font-size: 20vw;
+    right: -0.1em;
+    bottom: 2.1em;
+    letter-spacing: -0.05em;
+  }
+  
+  .clock__seconds:before {
+    content: '';
   }
 }

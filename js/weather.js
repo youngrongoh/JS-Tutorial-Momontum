@@ -11,7 +11,10 @@ function getWeather(lat, lon) {
   }).then(function(json) {
     const temperature = json.main.temp;
     const place = json.name;
-    weather.innerText = `${temperature} @ ${place}`
+    const icon = json.weather[0].icon
+    const img = `<img class="weather__icon" src="http://openweathermap.org/img/wn/${icon}@2x.png">`
+    console.log(icon)
+    weather.innerHTML = `(${img}) ${Math.round(temperature)}℃ @ ${place}`
   })
 }
 

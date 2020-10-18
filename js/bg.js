@@ -1,9 +1,5 @@
 const body = document.querySelector('body');
 
-function handleImgLoad() {
-  
-}
-
 function paintImage(imgNumber) {
   const image = new Image();
   image.src = `imgs/${imgNumber + 1}.jpg`

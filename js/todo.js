@@ -7,7 +7,7 @@ const TODOS_LS = 'toDos';
 let toDos = [];
 
 function deleteToDo(event) {
-  const btn = event.target;
+  const btn = event.target.tagName === 'BUTTON' ? event.target : event.target.parentNode;
   const li = btn.parentNode;
   toDoList.removeChild(li);
   const cleanToDos = toDos.filter(toDo => {
@@ -23,14 +23,27 @@ function saveToDos() {
 
 function paintToDo(text) {
   const li = document.createElement('li');
+  const label = document.createElement('label')
+  const mark = document.createElement('span')
+  const check = document.createElement('input');
   const delBtn = document.createElement('button');
   const span = document.createElement('span');
   const newId = toDos.length + 1;
-  delBtn.textContent = '❌';
+  li.setAttribute('class', 'todos__item');
+  label.setAttribute('class', 'todos__label')
+  mark.setAttribute('class', 'todos__mark');
+  check.setAttribute('class', 'todos__check');
+  check.setAttribute('type', 'checkbox');
+  span.setAttribute('class', 'todos__text');
+  delBtn.setAttribute('class', 'todos__delete');
+  delBtn.innerHTML = '<i class="far fa-minus-square"></i>';
   delBtn.addEventListener('click', deleteToDo);
   span.textContent = text;
+  label.appendChild(check);
+  label.appendChild(mark);
+  label.appendChild(span);
+  li.appendChild(label);
   li.appendChild(delBtn);
-  li.appendChild(span);
   li.setAttribute('data-id', newId);
   toDoList.appendChild(li);
   const toDoObj = {
