@@ -16,7 +16,7 @@ function getDate() {
       seconds < 10 ? `0${seconds}` : seconds}`
 }
 
-function init() {
+export function init() {
   getDate();
   setInterval(getDate, 1000)
 }

@@ -37,7 +37,7 @@ function loadName() {
   }
 }
 
-function init() {
+export function init() {
   loadName();
 }
 

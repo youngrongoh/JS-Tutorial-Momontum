@@ -12,7 +12,7 @@ function getRandom() {
   return number;
 }
 
-function init() {
+export function init() {
   const randomNumber = getRandom();
   paintImage(randomNumber)
 }

@@ -7,11 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500;700&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/4eb8bfd01f.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="style.css" />
-  <script src="js/clock.js" defer></script>
-  <script src="js/greeting.js" defer></script>
-  <script src="js/todo.js" defer></script>
-  <script src="js/bg.js" defer></script>
-  <script src="js/weather.js" defer></script>
+  <script type="module" src="js/main.js" defer></script>
 </head>
 <body>
   <span class="js-weather weather"></span>
@@ -24,7 +20,7 @@
     </section>
     <section class="todos">
       <form class="js-toDoForm todos__form">
-        <input type="text" placeholder="Write a ToDo" maxlength="15" class="todos__input" />
+        <input type="text" placeholder="Write a ToDo" maxlength="16" class="todos__input" />
       </form>
       <ul class="js-toDoList todos__list">
       </ul>

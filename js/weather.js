@@ -52,7 +52,7 @@ function loadCoords() {
   }
 }
 
-function init() {
+export function init() {
   loadCoords();
 }
 
