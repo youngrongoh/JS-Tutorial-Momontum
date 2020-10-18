@@ -102,6 +102,7 @@ button {
 .todos__list {
   height: 30vh;
   width: fit-content;
+  min-width: 9.5em;
   text-align: right;
   font-size: 1.5em;
   font-weight: normal;
@@ -127,6 +128,7 @@ button {
 .todos__item {
   margin-bottom: 0.4em;
   margin-right: 2em;
+  white-space: nowrap;
 }
 
 .todos__mark {
@@ -224,6 +226,7 @@ button {
   opacity: 0.5;
   letter-spacing: -0.15em;
   line-height: 0.8;
+  z-index: -1;
 }
 
 .clock__hours {
@@ -280,7 +283,7 @@ button {
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: -1;
+  z-index: -2;
   animation: fadeIn 0.5s linear;
 }
 
@@ -294,6 +297,9 @@ button {
 }
 
 @media screen and (max-width: 768px) {
+  :root {
+    font-size: 0.7em;
+  }
   .greeting__input,
   .greeting__name,
   .greeting__input::placeholder {
@@ -317,13 +323,60 @@ button {
   }
 
   .clock__seconds {
-    font-size: 20vw;
+    font-size: 0.7em;
     right: -0.1em;
-    bottom: 1.8em;
+    bottom: 1.6em;
     letter-spacing: -0.05em;
   }
   
   .clock__seconds:before {
     content: '';
   }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+  :root {
+    font-size: 0.7em;
+  }
+
+  .todos__list {
+    height: 55vh;
+  }
+
+  .greeting__input,
+  .greeting__name,
+  .greeting__input::placeholder {
+    font-size: 2rem;
+  }
+
+  .clock {
+    right: -1.9em;
+    bottom: 3.05em;
+    font-size: 10.5vw;
+    transform: rotate(90deg);
+  }
+
+    
+  .clock__hours {
+    right: 2.58em;
+  }
+
+  .clock__minutes {
+    right: 1.3em;
+  }
+
+  .clock__minutes:before {
+    right: -0.15em;
+  }
+
+
+  .clock__seconds {
+    font-size: 1.5em;
+    right: -0.05em;
+    bottom: 0;
+  }
+
+  .clock__seconds:before {
+    content: ':';
+  } 
 }
